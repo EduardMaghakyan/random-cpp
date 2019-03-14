@@ -14,8 +14,6 @@ long countTriplets(vector<long> arr, long r)
 
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
-
     string nr_temp;
     getline(cin, nr_temp);
 
@@ -41,9 +39,7 @@ int main()
 
     long ans = countTriplets(arr, r);
 
-    fout << ans << "\n";
-
-    fout.close();
+    cout << ans << "\n";
 
     return 0;
 }

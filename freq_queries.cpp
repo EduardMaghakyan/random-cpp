@@ -50,8 +50,6 @@ vector<int> freqQuery(vector<vector<int>> queries)
 }
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
-
     string q_temp;
     getline(cin, q_temp);
 
@@ -89,8 +87,6 @@ int main()
     }
 
     cout << "\n";
-
-    fout.close();
 
     return 0;
 }

@@ -31,8 +31,6 @@ string twoStrings(string s1, string s2)
 
 int main()
 {
-    // ofstream fout(getenv("OUTPUT_PATH"));
-
     int q;
     cin >> q;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -48,10 +46,7 @@ int main()
         string result = twoStrings(s1, s2);
 
         cout << result << "\n";
-        // fout << result << "\n";
     }
-
-    // fout.close();
 
     return 0;
 }
