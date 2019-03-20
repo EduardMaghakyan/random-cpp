@@ -2,38 +2,36 @@
 #include "helper.h"
 
 using namespace std;
+long factorial(int n)
+{
+    long factorial = 1;
+    for (int i = 1; i <= n; ++i)
+    {
+        factorial *= i;
+    }
 
+    return factorial;
+}
 int beautifulPermutations(vector<int> arr)
 {
-    int nicePermuatations = 0;
-    sort(arr.begin(), arr.end());
-    int totalPermuts = 0;
-    do
+    long originalSize = arr.size();
+    long totalPermuations = factorial(arr.size());
+    set<int> s;
+    unsigned size = arr.size();
+    for (unsigned i = 0; i < size; ++i)
     {
-        bool isNice = true;
-        for (size_t i = 0; i < arr.size() - 1; i++)
-        {
-            if (arr[i] == arr[i + 1])
-            {
-                isNice = false;
-                i = arr.size();
-            }
-        }
+        s.insert(arr[i]);
+    }
+    arr.assign(s.begin(), s.end());
+    int uniqueElements = arr.size();
+    long uniquePermuations = totalPermuations / (long)pow(2.0, (double)(originalSize - uniqueElements));
+    long beatuifulPermuations = uniquePermuations - ((originalSize - uniqueElements) * (long)pow(2.0, (double)(originalSize - uniqueElements)));
+    cout << "Total permuations: " << totalPermuations << endl;
+    cout << "Unique permuations: " << uniquePermuations << endl;
+    cout << "Beatuiful permuations: " << beatuifulPermuations << endl;
 
-        if (isNice)
-        {
-            nicePermuatations++;
-        }
-        // totalPermuts++;
-        // for (size_t i = 0; i < arr.size(); i++)
-        // {
-        //     cout << arr[i] << " ";
-        // }
-        // cout << endl;
-    } while (next_permutation(arr.begin(), arr.end()));
-    // cout << "Total permutations: " << totalPermuts << endl;
     double base = pow(10.0, 9.0) + 7;
-    return nicePermuatations % (int)base;
+    return beatuifulPermuations % (int)base;
 }
 
 int main()
